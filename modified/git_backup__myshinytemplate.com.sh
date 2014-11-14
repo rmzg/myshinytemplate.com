@@ -1,8 +1,8 @@
 #!/bin/sh
 DATE=`date +%Y%m%d`
-DIR=/home/wbraswell/public_html/shinycmstemplate.com-latest
+DIR=/home/wbraswell/public_html/myshinytemplate.com-latest
 
-/home/wbraswell/bin/mysqldump__shinycmstemplate.com__no_user.sh
+/home/wbraswell/bin/mysqldump__myshinytemplate.com__no_user.sh
 
 cd $DIR
 rm shinycms.conf.redacted

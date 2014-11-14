@@ -1,10 +1,10 @@
-shinycmstemplate.com
-====================
+myshinytemplate.com
+===================
 
-This is the official website for the ShinyCMS Template.
-http://www.shinycmstemplate.com
+This is the official website for MyShinyTemplate.com
+http://www.myshinytemplate.com
 
-The ShinyCMS Template Website by William N. Braswell, Jr. is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+The MyShinyTemplate.com Website by William N. Braswell, Jr. is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 http://creativecommons.org/licenses/by-sa/4.0/
 
 This website is powered by ShinyCMS on Catalyst on LAMP thanks to Ubuntu GNU/Linux.
@@ -19,4 +19,4 @@ http://gnu.org/
 
 Hosting is provided by APTech, source code is available on GitHub.
 http://autoparallel.com/
-https://github.com/wbraswell/shinycmstemplate.com
+https://github.com/wbraswell/myshinytemplate.com

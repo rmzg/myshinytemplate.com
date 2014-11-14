@@ -2,7 +2,7 @@ name   ShinyCMS
 author Will Braswell <william.braswell@autoparallel.com>
 
 site_name    ShinyCMS Template
-domain       shinycmstemplate.com
+domain       myshinytemplate.com
 email_from   wbraswell@cloud-web0.autoparallel.com
 
 upload_dir   cms-uploads
@@ -146,7 +146,7 @@ recaptcha_private_key 6Led1LwSAAAAAI9EMK3XSFUuXHd29drsJD-Ha68P
 <Model::DB>
 	schema_class ShinyCMS::Schema
 	<connect_info>
-		dsn        dbi:mysql:shinycmstemplate_com
+		dsn        dbi:mysql:myshinytemplate_com
 		user       template_user
 		password   REDACTED
 		AutoCommit 1
