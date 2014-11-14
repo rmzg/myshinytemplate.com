@@ -2,7 +2,7 @@
 DATE=`date +%Y%m%d`
 USER=shinycmstemplate_user
 PASS=REDACTED
-DB=shinycmstemplate.com
+DB=shinycmstemplate_com
 DIR=/home/wbraswell/public_html/shinycmstemplate.com-latest/backup
 FILE=wbraswell_$DATE-shinycmstemplate.com__no_user.sql
 rm $DIR/*no_user.sql.bz2
