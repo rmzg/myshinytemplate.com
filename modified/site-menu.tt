@@ -28,7 +28,7 @@
 
 	<li class="topmenu">
 		<a href="/blog"
-		[%- IF controller == 'Blog' OR meta.menu_selected == 'Blog' %] class="selected"[% END %]>Ship's Log</a>
+		[%- IF controller == 'Blog' OR meta.menu_selected == 'Blog' %] class="selected"[% END %]>Blog</a>
 		<div class="dropdown">
 			<ul>
 				<li>
@@ -42,7 +42,6 @@
 		[%- IF controller == 'Forums' OR meta.menu_selected == 'Forums' %] class="selected"[% END %]>Forums</a>
 	</li>
 
-<!-- DISABLE EVENTS PAGE, EVENTS SUMMARY ON HOME PAGE REMAINS
 	<li class="topmenu">
 		<a href="/events"
 		[%- IF controller == 'Events' OR meta.menu_selected == 'Events' %] class="selected"[% END %] >Events</a>
@@ -55,12 +54,10 @@
 		</ul>
 		</div>
 	</li>
--->
 
-<!-- DISABLE SHIP'S STORE
 	<li class="topmenu">
 		<a href="/shop"
-		[%- IF controller == 'Shop' OR meta.menu_selected == 'Shop' %] class="selected"[% END %]>Ship's Store</a>
+		[%- IF controller == 'Shop' OR meta.menu_selected == 'Shop' %] class="selected"[% END %]>Shop</a>
 		<div class="dropdown">		
 		<ul>
 			<li>
@@ -72,7 +69,6 @@
 		</ul>
 		</div>		
 	</li>
--->
 	
 </ul>
 

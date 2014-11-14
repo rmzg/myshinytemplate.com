@@ -19,7 +19,7 @@
 #     LICENSE => q[open_source]
 #     NAME => q[ShinyCMS]
 #     NO_META => q[1]
-#     PREREQ_PM => { Catalyst::Action::RenderView=>q[0], CatalystX::RoleApplicator=>q[0], Catalyst::View::Email=>q[0], Catalyst::Runtime=>q[5.80004], parent=>q[0], Catalyst::Authentication::Realm::SimpleDB=>q[0], DBIx::Class::TimeStamp=>q[0], Catalyst::Plugin::Session::Store::DBIC=>q[0], Config::General=>q[0], Email::Sender=>q[0.102360], Catalyst::Plugin::Authentication=>q[0], Email::Valid=>q[0], Catalyst::TraitFor::Request::BrowserDetect=>q[0], Catalyst::Plugin::Session::State::Cookie=>q[0], ExtUtils::MakeMaker=>q[6.36], MooseX::MarkAsMethods=>q[0], Catalyst::Plugin::Session=>q[0], Catalyst::View::TT=>q[0], Captcha::reCAPTCHA=>q[0], XML::Feed=>q[0], DBIx::Class::Schema::Loader=>q[0], Catalyst::Plugin::ConfigLoader=>q[0], Catalyst::Plugin::Static::Simple=>q[0], HTML::Restrict=>q[0], Net::Domain::TLD=>q[0], File::Pid=>q[0], Method::Signatures::Simple=>q[0], Text::CSV::Simple=>q[0], HTML::TreeBuilder=>q[0], DBIx::Class::EncodedColumn=>q[0], MooseX::NonMoose=>q[0] }
+#     PREREQ_PM => { Catalyst::Runtime=>q[5.80004], File::Pid=>q[0], Email::Valid=>q[0], MooseX::NonMoose=>q[0], Net::Domain::TLD=>q[0], Method::Signatures::Simple=>q[0], Captcha::reCAPTCHA=>q[0], Catalyst::Plugin::Session::Store::DBIC=>q[0], parent=>q[0], Catalyst::Plugin::Authentication=>q[0], Catalyst::TraitFor::Request::BrowserDetect=>q[0], Catalyst::Plugin::ConfigLoader=>q[0], XML::Feed=>q[0], Catalyst::Action::RenderView=>q[0], Catalyst::View::Email=>q[0], Text::CSV::Simple=>q[0], HTML::TreeBuilder=>q[0], CatalystX::RoleApplicator=>q[0], ExtUtils::MakeMaker=>q[6.36], Catalyst::Plugin::Session=>q[0], MooseX::MarkAsMethods=>q[0], DBIx::Class::EncodedColumn=>q[0], Catalyst::Authentication::Realm::SimpleDB=>q[0], Email::Sender=>q[0.102360], HTML::Restrict=>q[0], DBIx::Class::Schema::Loader=>q[0], Config::General=>q[0], DBIx::Class::TimeStamp=>q[0], Catalyst::Plugin::Static::Simple=>q[0], Catalyst::View::TT=>q[0], Catalyst::Plugin::Session::State::Cookie=>q[0] }
 #     TEST_REQUIRES => {  }
 #     VERSION => q[0.007]
 #     VERSION_FROM => q[lib/ShinyCMS.pm]
@@ -1072,14 +1072,20 @@ manifypods : pure_all  \
 
 EXE_FILES = script/shinycms_cgi.pl script/shinycms_create.pl script/shinycms_fastcgi.pl script/shinycms_server.pl script/shinycms_test.pl
 
-pure_all :: $(INST_SCRIPT)/shinycms_test.pl $(INST_SCRIPT)/shinycms_fastcgi.pl $(INST_SCRIPT)/shinycms_server.pl $(INST_SCRIPT)/shinycms_create.pl $(INST_SCRIPT)/shinycms_cgi.pl
+pure_all :: $(INST_SCRIPT)/shinycms_create.pl $(INST_SCRIPT)/shinycms_test.pl $(INST_SCRIPT)/shinycms_fastcgi.pl $(INST_SCRIPT)/shinycms_server.pl $(INST_SCRIPT)/shinycms_cgi.pl
 	$(NOECHO) $(NOOP)
 
 realclean ::
 	$(RM_F) \
-	  $(INST_SCRIPT)/shinycms_test.pl $(INST_SCRIPT)/shinycms_fastcgi.pl \
-	  $(INST_SCRIPT)/shinycms_server.pl $(INST_SCRIPT)/shinycms_create.pl \
+	  $(INST_SCRIPT)/shinycms_create.pl $(INST_SCRIPT)/shinycms_test.pl \
+	  $(INST_SCRIPT)/shinycms_fastcgi.pl $(INST_SCRIPT)/shinycms_server.pl \
 	  $(INST_SCRIPT)/shinycms_cgi.pl 
+
+$(INST_SCRIPT)/shinycms_create.pl : script/shinycms_create.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/shinycms_create.pl
+	$(CP) script/shinycms_create.pl $(INST_SCRIPT)/shinycms_create.pl
+	$(FIXIN) $(INST_SCRIPT)/shinycms_create.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/shinycms_create.pl
 
 $(INST_SCRIPT)/shinycms_test.pl : script/shinycms_test.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/shinycms_test.pl
@@ -1098,12 +1104,6 @@ $(INST_SCRIPT)/shinycms_server.pl : script/shinycms_server.pl $(FIRST_MAKEFILE) 
 	$(CP) script/shinycms_server.pl $(INST_SCRIPT)/shinycms_server.pl
 	$(FIXIN) $(INST_SCRIPT)/shinycms_server.pl
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/shinycms_server.pl
-
-$(INST_SCRIPT)/shinycms_create.pl : script/shinycms_create.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/shinycms_create.pl
-	$(CP) script/shinycms_create.pl $(INST_SCRIPT)/shinycms_create.pl
-	$(FIXIN) $(INST_SCRIPT)/shinycms_create.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/shinycms_create.pl
 
 $(INST_SCRIPT)/shinycms_cgi.pl : script/shinycms_cgi.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/shinycms_cgi.pl
@@ -1479,7 +1479,7 @@ ppd :
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::Plugin::Session::State::Cookie" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::Plugin::Session::Store::DBIC" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::Plugin::Static::Simple" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::Runtime" VERSION="5.80004" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="5.80004" NAME="Catalyst::Runtime" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::TraitFor::Request::BrowserDetect" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::View::Email" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Catalyst::View::TT" />' >> $(DISTNAME).ppd

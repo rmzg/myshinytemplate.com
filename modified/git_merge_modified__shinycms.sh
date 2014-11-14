@@ -115,3 +115,9 @@ cd $MY_DIR
 cd root/user
 rm view_user.tt
 ln -s ../../modified/view_user.tt ./view_user.tt
+
+cd $MY_DIR
+cd root/shop
+rm wrapper.tt
+ln -s ../../modified/wrapper.tt ./wrapper.tt
+

@@ -35,7 +35,7 @@
     <div class="homepage-panel">
 		[%- blog_posts = c.controller( 'Blog' ).get_posts( c, 1, 5 ) %]
 		[%- IF blog_posts %]
-		<h3><a href="/blog" style="color: #FFFFFF;">Ship's Log</a>
+		<h3><a href="/blog" style="color: #FFFFFF;">Blog</a>
 		</h3>
 		<ul>
 		[%- FOREACH blog_post IN blog_posts %]
