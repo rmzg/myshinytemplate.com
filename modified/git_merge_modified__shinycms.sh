@@ -121,3 +121,13 @@ cd root/shop
 rm wrapper.tt
 ln -s ../../modified/wrapper.tt ./wrapper.tt
 
+cd $MY_DIR
+cd root/
+rm robots.txt
+ln -s ../modified/robots.txt ./robots.txt
+
+cd $MY_DIR
+cd root/
+rm google*.html
+ln -s ../modified/google*.html ./
+
