@@ -1,7 +1,7 @@
 #!/bin/sh
 DATE=`date +%Y%m%d`
 USER=template_user
-PASS=REDACTED
+PASS='REDACTED'
 DB=myshinytemplate_com
 DIR=/home/wbraswell/public_html/myshinytemplate.com-latest/backup
 FILE=wbraswell_$DATE-myshinytemplate.com__no_user.sql
