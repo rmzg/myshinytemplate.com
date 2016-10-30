@@ -5,8 +5,8 @@ MY_DIR_SUFFIX=$3
 MY_DIR=$PARENT_DIR/$MY_REPO_NAME$MY_DIR_SUFFIX
 DATE=`date +%Y%m%d`
 BACKUP_DIR=$PARENT_DIR/$MY_REPO_NAME-backup_$DATE
-GIT_BACKUP_COMMAND=/home/wbraswell/bin/git_backup__$MY_REPO_NAME.sh
-SHINY_DIR=/home/wbraswell/public_html/ShinyCMS-latest
+GIT_BACKUP_COMMAND=/home/NEED_USERNAME/bin/git_backup__$MY_REPO_NAME.sh
+SHINY_DIR=/home/NEED_USERNAME/public_html/ShinyCMS-latest
 
 # GIT BACKUP, LOCAL BACKUP, GIT PULL, COPY
 

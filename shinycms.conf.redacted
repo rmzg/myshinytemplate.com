@@ -1,9 +1,9 @@
 name   ShinyCMS
-author Will Braswell <william.braswell@autoparallel.com>
+author NEED_ADMIN_FIRST_NAME NEED_ADMIN_LAST_NAME <NEED_ADMIN_EMAIL>
 
 site_name    MyShinyTemplate
 domain       myshinytemplate.com
-email_from   wbraswell@cloud-web0.autoparallel.com
+email_from   NEED_USERNAME@NEED_DOMAIN_NAME
 
 upload_dir   cms-uploads
 default_view HTML
@@ -127,7 +127,7 @@ recaptcha_private_key 6Led1LwSAAAAAI9EMK3XSFUuXHd29drsJD-Ha68P
 	# e.g. http://example.com/paymenthandler/subscription/ccbill/[key]/success
 	key    op394jq20v378
 	# Email address to send despatch instructions to
-	despatch_email    william.braswell@autoparallel.com
+	despatch_email    NEED_ADMIN_EMAIL
 </Controller::PaymentHandler::PhysicalGoods::CCBill>
 
 <ccbill-check-access>
