@@ -1,0 +1,13 @@
+#!/bin/sh
+DATE=`date +%Y%m%d`
+USER=template_user
+PASS='REDACTED'
+DB=myshinytemplate_com
+DIR=/home/NEED_USERNAME/public_html/myshinytemplate.com-latest/backup
+FILE=NEED_USERNAME_$DATE-myshinytemplate.com__yes_user.sql
+rm $DIR/*yes_user.sql.bz2
+mysqldump --user=$USER --password=$PASS $DB --lock-tables > $DIR/$FILE
+cd $DIR
+du -hs $FILE
+bzip2 $FILE
+du -hs $FILE.bz2
