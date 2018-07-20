@@ -1,0 +1,14 @@
+# systemd script to be copied or symlinked into /etc/systemd/system/
+# DO NOT USE AT THE SAME TIME AS Upstart script in /etc/init/ OR SysV-init script in /etc/init.d/
+# author "NEED_ADMIN_FIRST_NAME NEED_ADMIN_LAST_NAME <NEED_ADMIN_EMAIL>"
+[Unit]
+Description=FastCGI server for ShinyCMS website myshinytemplate.com
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/su -s /bin/sh -c 'exec "$0" "$@"' NEED_USERNAME -- /home/NEED_USERNAME/public_html/myshinytemplate.com-latest/modified/fastcgi_start__myshinytemplate.com.sh
+ExecStop=/bin/kill `cat /tmp/myshinytemplate.com.pid`
+
+[Install]
+WantedBy=multi-user.target
